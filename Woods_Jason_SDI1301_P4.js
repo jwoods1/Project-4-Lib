@@ -30,7 +30,7 @@ var myLibrary = function(){
 		}
 	};
 	// string check Email // project 3 missing returns and use of methods
-	var emailValidation = function(address){
+	var emailValidation = function(address) {
 		if (address.lastIndexOf("@") < address.lastIndexOf(".") ) {
 			if (address.indexOf("@") > 0) {
 				if (address.indexOf("@@") == -1) {
@@ -60,7 +60,7 @@ var myLibrary = function(){
 		};
 	};
 	// check url
-	var urlValidation = function(url){
+	var urlValidation = function(url) {
 		if (url.contains("https://") || url.contains("http://")) {
 			if (url.startsWith("https://") || url.startsWith("http://")) {
 				return true
@@ -71,13 +71,29 @@ var myLibrary = function(){
 			return false
 		}
 	};
-
+	// string to uppercase and lower case
+	var toUpperCase = function(string) {
+		newStr = "";
+		newArr = string.split(" ");
+		for(var i = 0; i < newArr.length ; i++){
+			newArr[i] = newArr[i].toLowerCase();
+			};
+		for(var i = 0 ; i < newArr.length ; i++){
+    		newArr[i] = newArr[i].charAt(0).toUpperCase() + newArr[i].substr(1);
+    	};
+    
+		newStr = newArr.join(" ");
+		return newStr;
+	};
 	return {
 		"phoneNumberValid": phoneNumberValid,
 		"emailValidation": emailValidation,
-		"urlValidation": urlValidation 
+		"urlValidation": urlValidation,
+		"toUpperCase": toUpperCase 
 	};
-};
+	
+}
+
 
 
 var newLib = new myLibrary;
@@ -87,7 +103,7 @@ var email = "Jwoods1@fullsail.edu";
 console.log(newLib.phoneNumberValid(phoneNumber));
 console.log(newLib.emailValidation(email));
 console.log(newLib.urlValidation(url));
-
+console.log(newLib.toUpperCase("maN thIs this is hArD"));
 
 
 
@@ -111,7 +127,7 @@ function upperCase (string) {
 		newArray[i]
 	};
 }
-
+return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 console.log(upperCase(myString));
 
 */
