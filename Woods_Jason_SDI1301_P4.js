@@ -85,11 +85,35 @@ var myLibrary = function(){
 		newStr = newArr.join(" ");
 		return newStr;
 	};
+	// replace string 
+	var strReplace = function(str,a,b) {
+		do{
+			str = str.replace(a,b);
+		} while(str.indexOf(a) !== -1);
+		return str;
+	};
+	// Decimal place controler
+	var decimalControl = function(num,numDec) {
+		var n = num.toFixed(numDec);
+		return n;
+	};
+	// String to Number
+	var parseNum = function(str) {
+		if (isNaN(str) == true) {
+			return "Not a number!";
+		} else{
+			return parseInt(str);
+		};
+	};
+
 	return {
 		"phoneNumberValid": phoneNumberValid,
 		"emailValidation": emailValidation,
 		"urlValidation": urlValidation,
-		"toUpperCase": toUpperCase 
+		"toUpperCase": toUpperCase,
+		"strReplace": strReplace,
+		"decimalControl": decimalControl,
+		"parseNum": parseNum
 	};
 	
 }
@@ -99,78 +123,18 @@ var myLibrary = function(){
 var newLib = new myLibrary;
 var phoneNumber = "208-899-1062";
 var url = "https://www.holllo.com";
-var email = "Jwoods1@fullsail.edu";
+var email = "JTannner@fullsail.edu";
 console.log(newLib.phoneNumberValid(phoneNumber));
 console.log(newLib.emailValidation(email));
 console.log(newLib.urlValidation(url));
-console.log(newLib.toUpperCase("maN thIs this is hArD"));
+console.log(newLib.toUpperCase("tanner aHas mAd thiS HARD"));
+console.log(newLib.strReplace("a:c:d",":","/")); 
+console.log(newLib.decimalControl(1234.3242345234,2));
+console.log(newLib.parseNum("213"))
 
 
 
 
-
-
-
-
-
-
-/*Title-case a string (split into words, then uppercase the first letter of each word).
-This problem involves sending a string into the function, changing the first letter
-of each word to uppercase while making sure the rest of the word is lowercase,
-and then returning the string from the function so it can be output.
-*/
-/*var myString = "john jake jason mark"
-console.log(myString.split(" "));
-function upperCase (string) {
-	var newArray = string.split(" ");
-	for (var i = 0; i < newArray[i].length; ++i) {
-		newArray[i]
-	};
-}
-return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
-console.log(upperCase(myString));
-
-*/
-
-
-//revealing module pattern
-
-
-
-
-/*Given a string that is a list of things separated by a given string, as well as another
-string separator, return a string with the first separator changed to the second: “a,b,c” +
-“,” + “/” --> “a/b/c”.
-For this problem, you will need to send three arguments into your function. The
-first is the string with items separated by a separator (such as a comma). The
-second is the separator that is being replaced. The third parameter is the
-separator you are going to use in place of the original. Thus, if you send the
-parameters (“a,b,c”, “,”, “/”), the function should return the string as “a/b/c”.
-*/
-var separator = "c,b,a"
-var replace = separator.replace(",", "/");
-	
-
-console.log(replace); 
-/*
-Number Functions
-
-Format a number to use a specific number of decimal places as for money: 2.1 --> 2.10.
-This function will require two parameters. The first is the number you wish to
-change, and the second is the number of decimal places you wish to use to
-format the number. For example, to format pi to three decimal places, you might
-send the following argument parameters: (3.14159, 3). The function will then
-return 3.142.
-*/
-function decimalControl (numb,numDec) {
-	var num = numb
-	var n = num.toFixed(numDec);
-	return n
-	
-};
-
-var cash = decimalControl(4.13223423523526,3);
-console.log(cash);
 /*Fuzzy-match a number: is the number above or below a number within a certain
 percent?
 This function confuses students the most, so please ask if you have questions.
@@ -201,6 +165,7 @@ send a string into the function and return it as a Number. If you want to get
 creative, you also can add a conditional to determine if the string sent into the
 function is a number before you do the conversion.
 */
+
 /*Array Functions
 Find the smallest value in an array than is greater than a given number.
 You will need to send two items into the function. The first is an array of numbers
