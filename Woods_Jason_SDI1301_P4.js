@@ -4,17 +4,9 @@
 //	Project 4
 //	Function Library
 
-/*String Functions
-Does a string follow a 123-456-7890 pattern like a phone number?
-This problem asks you to create a function that can accept a string and then
-determine if that string follows the pattern presented. For example, if you pass
-the string “123-45-67”, this would not match the pattern. But, if you passed the
-string “407-695-0100”, this would match the pattern. The only value returned
-from the function should be a Boolean; that is, true if the string matches the
-pattern or false if it does not.
-*/
+
 var myLibrary = function(){
-	//string check phone #
+	//string check phone # // project 2 use of Boolean logic
 	var phoneNumberValid = function(myString){
 		if (myString.length == 12) {
 			if (myString.charAt(3) == "-",myString.charAt(7) == "-") {
@@ -37,7 +29,7 @@ var myLibrary = function(){
 			return false;
 		}
 	};
-	// string check Email
+	// string check Email // project 3 missing returns and use of methods
 	var emailValidation = function(address){
 		if (address.lastIndexOf("@") < address.lastIndexOf(".") ) {
 			if (address.indexOf("@") > 0) {
@@ -53,7 +45,7 @@ var myLibrary = function(){
 						}else{
 							return false;
 						}
-										/// add Space check
+										
 					}else{
 						return false;
 					}
@@ -73,7 +65,7 @@ var myLibrary = function(){
 			if (url.startsWith("https://") || url.startsWith("http://")) {
 				return true
 			} else{
-				return false // add space check
+				return false 
 			}
 		}else{
 			return false
@@ -96,24 +88,11 @@ console.log(newLib.phoneNumberValid(phoneNumber));
 console.log(newLib.emailValidation(email));
 console.log(newLib.urlValidation(url));
 
-/*Does a string follow an aaa@bbb.ccc pattern like an email address?
-This problem is similar to the first except that the submitted string must follow a
-different pattern. For example, if you passed the string “fsosupport@fullsail", this
-would not match the pattern. But, if you passed the string “llewis@fullsail.com",
-this would match the pattern. The only value returned from the function should
-be a Boolean; that is, true if the string matches the pattern or false if it does not.
-*/
 
 
 
 
-/*Is the string a URL (Does it start with http:// or https://)?
-This task also involves looking at a submitted string to see if it includes the data
-necessary to indicate it is a URL. Thus, you should look for the http:// or https://.
-You do not have to worry if the rest of the URL is valid at this time. The only
-value returned from the function should be a Boolean; that is, true if the string
-matches the pattern or false if it does not.
-*/
+
 
 
 
@@ -188,4 +167,49 @@ greater than or less than 10. It would then determine if 5 is within 50% of 10. 
 function should then return the results.
 */
 
+/*Find the number of hours or days difference between two dates.
+This function requires you to send three parameters. The first two will be dates
+that you want to compare, and the third will be a string to determine if the
+function returns hours or days. The function will then perform the math
+necessary to find the difference between the two dates and return the choice of
+hours or days.
+*/
 
+
+
+/*Given a string version of a number, such as “42”, return the value as an actual Number
+data type, such as 42.
+As you have learned, there is a difference between a number as a string data
+type and a number as a Number data type. For this task, you will simply need to
+send a string into the function and return it as a Number. If you want to get
+creative, you also can add a conditional to determine if the string sent into the
+function is a number before you do the conversion.
+*/
+/*Array Functions
+Find the smallest value in an array than is greater than a given number.
+You will need to send two items into the function. The first is an array of numbers
+and the second will be a number you’ll compare to numbers within the array. You
+will then return the number in the array that is the next highest number to the one
+you’re using in the comparison. So, if you send the array [1,4,7,9,10,14,15] and
+the number 12 into the function, it should return 14 as the next highest number.
+*/
+
+/*
+Find the total value of just the numbers in an array, even if some of the items are not
+numbers.
+This one can be tricky if your array includes a string that is a number. You will
+send an array into the function and have it add together the numbers in the array.
+For example, if you send the array [1, “pickles”, 3, “onions”, 5, “10”, 6, “SDI”], the
+function should return 15. Therefore, it should be able to recognize “10” as a
+string and ignore it from the total.
+*/
+/*
+
+Given an array of objects and the name of a key, return the array sorted by the value of
+that key in each of the objects: “a” + [{a:2},{a:3},{a:1}] --> [{a:1},{a:2},{a:3}].
+This function also requires you to send two argument parameters. The first one
+is an array of objects and the second one is a key. The function will then sort the
+array of objects by the key you send. In this case, you might send an array of
+objects [{a:2},{b:3}.{a:1},{a:4}] and the key “a” which will then be sorted by the
+function using the key “a” and returned as [{a:1},{a:2},{a:3},{a:4},{b:3}].
+*/
