@@ -132,6 +132,16 @@ var myLibrary = function(){
 				}
 			};
 		};
+		// adding array numbers only
+		var addArrayNum = function(array){
+			var total = 0;
+			for(var i=0; i < array.length; i++) {
+				if("number" == typeof array[i]) {
+				total += array[i];
+				} 
+			}
+			return total;
+		};
 	
 	return {
 		"phoneNumberValid": phoneNumberValid,
@@ -142,29 +152,35 @@ var myLibrary = function(){
 		"decimalControl": decimalControl,
 		"parseNum": parseNum,
 		"diffDates": diffDates,
-		"arrayValue": arrayValue
+		"arrayValue": arrayValue,
+		"addArrayNum": addArrayNum
 	};
 	
 }
 
 
-var myArray = [1,2,3,4,5,12,14,18,30]
+// json data for project 3 
+var json1 = {
+	"myArray": [1,2,3,4,5,12,14,18,30],
+	"phoneNumber": "208-899-1932",
+	"url": "https://www.holool.com",
+	"email": "Jtanner@fullsail.edu"
+};
+
 var newLib = new myLibrary;
-var phoneNumber = "208-899-1062";
-var url = "https://www.holllo.com";
-var email = "JTannner@fullsail.edu";
-console.log(newLib.phoneNumberValid(phoneNumber));
-console.log(newLib.emailValidation(email));
-console.log(newLib.urlValidation(url));
+
+console.log(newLib.phoneNumberValid(json1.phoneNumber));
+console.log(newLib.emailValidation(json1.email));
+console.log(newLib.urlValidation(json1.url));
 console.log(newLib.toUpperCase("tanner aHas mAd thiS HARD"));
 console.log(newLib.strReplace("a:c:d",":","/")); 
 console.log(newLib.decimalControl(1234.3242345234,2));
 console.log(newLib.parseNum("213"))
-var now = new Date(2013, 0, 30);
-var later = new Date(2013, 5, 1);
+var now = new Date(1973, 3, 27);
+var later = new Date(2013, 0, 31);
 console.log(newLib.diffDates(now,later,"days"));
-console.log(newLib.arrayValue(myArray,2));
-
+console.log(newLib.arrayValue(json1.myArray,4));
+console.log(newLib.addArrayNum([10,"10",2,5,"20"]));
 
 
 /*Fuzzy-match a number: is the number above or below a number within a certain
@@ -178,31 +194,14 @@ So, if you were to send (5, 10, 50), the function would first determine if 5 is
 greater than or less than 10. It would then determine if 5 is within 50% of 10. The
 function should then return the results.
 */
+var fuzzyMatch = function(value1,value2,value3){
 
 
-/*
-Find the total value of just the numbers in an array, even if some of the items are not
-numbers.
-This one can be tricky if your array includes a string that is a number. You will
-send an array into the function and have it add together the numbers in the array.
-For example, if you send the array [1, “pickles”, 3, “onions”, 5, “10”, 6, “SDI”], the
-function should return 15. Therefore, it should be able to recognize “10” as a
-string and ignore it from the total.
-*/
-var addArrayNum = function(array){
-	var total = 0;
-	
-	for(var i=0; i < array.length; i++) {
-		if(!isNaN(array[i])) {
-			total += array[i];
-		} 
-		
-	}
-	return total;
-
-	
 }
-console.log(addArrayNum([10,"bob",2]));
+
+
+
+
 /*
 
 Given an array of objects and the name of a key, return the array sorted by the value of
@@ -213,9 +212,20 @@ array of objects by the key you send. In this case, you might send an array of
 objects [{a:2},{b:3}.{a:1},{a:4}] and the key “a” which will then be sorted by the
 function using the key “a” and returned as [{a:1},{a:2},{a:3},{a:4},{b:3}].
 */
-var keyArray = function(array,key){
+var objectArraySort = function(array,key){
+	for(var i = 0; i <array.length; i++) {
+		for(var j = i; j < array.length; j++){
+			if(array[j][index] < array[i][index]){
+				
+			}
+		}
+	}
 
 }
 
+var obArray = [{a:1},{a:3},{a:5},{a:7},{b:2},{b:3},{b:6}];
+
+
+console.log(obArray.prototype.sort("b"));
 
 
