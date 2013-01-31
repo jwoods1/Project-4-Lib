@@ -105,7 +105,34 @@ var myLibrary = function(){
 			return parseInt(str);
 		};
 	};
-
+	// Dates differences
+	var diffDates = function(date1,date2,format) {
+		
+		var oneday =1000*60*60*24;
+		var date1ms = date1.getTime();
+		var date2ms = date2.getTime();
+		var differencems = date2ms - date1ms;
+		
+		if(format == "days"){
+		return (Math.round(differencems/oneday) + "days");
+		}
+		if(format == "time") {
+		return (Math.round((differencems/oneday)*24) + "Hrs");
+		};
+	
+	};
+		// array next highest value
+	
+		var arrayValue = function(arr,value){
+			var arr = arr.slice(0).sort(function(a,b){return a-b;});
+	
+			for (var i=0; i < arr.length; i++) {
+				if(arr[i] > value){
+					return arr[i];
+				}
+			};
+		};
+	
 	return {
 		"phoneNumberValid": phoneNumberValid,
 		"emailValidation": emailValidation,
@@ -113,13 +140,15 @@ var myLibrary = function(){
 		"toUpperCase": toUpperCase,
 		"strReplace": strReplace,
 		"decimalControl": decimalControl,
-		"parseNum": parseNum
+		"parseNum": parseNum,
+		"diffDates": diffDates,
+		"arrayValue": arrayValue
 	};
 	
 }
 
 
-
+var myArray = [1,2,3,4,5,12,14,18,30]
 var newLib = new myLibrary;
 var phoneNumber = "208-899-1062";
 var url = "https://www.holllo.com";
@@ -131,7 +160,10 @@ console.log(newLib.toUpperCase("tanner aHas mAd thiS HARD"));
 console.log(newLib.strReplace("a:c:d",":","/")); 
 console.log(newLib.decimalControl(1234.3242345234,2));
 console.log(newLib.parseNum("213"))
-
+var now = new Date(2013, 0, 30);
+var later = new Date(2013, 5, 1);
+console.log(newLib.diffDates(now,later,"days"));
+console.log(newLib.arrayValue(myArray,2));
 
 
 
@@ -147,33 +179,6 @@ greater than or less than 10. It would then determine if 5 is within 50% of 10. 
 function should then return the results.
 */
 
-/*Find the number of hours or days difference between two dates.
-This function requires you to send three parameters. The first two will be dates
-that you want to compare, and the third will be a string to determine if the
-function returns hours or days. The function will then perform the math
-necessary to find the difference between the two dates and return the choice of
-hours or days.
-*/
-
-
-
-/*Given a string version of a number, such as “42”, return the value as an actual Number
-data type, such as 42.
-As you have learned, there is a difference between a number as a string data
-type and a number as a Number data type. For this task, you will simply need to
-send a string into the function and return it as a Number. If you want to get
-creative, you also can add a conditional to determine if the string sent into the
-function is a number before you do the conversion.
-*/
-
-/*Array Functions
-Find the smallest value in an array than is greater than a given number.
-You will need to send two items into the function. The first is an array of numbers
-and the second will be a number you’ll compare to numbers within the array. You
-will then return the number in the array that is the next highest number to the one
-you’re using in the comparison. So, if you send the array [1,4,7,9,10,14,15] and
-the number 12 into the function, it should return 14 as the next highest number.
-*/
 
 /*
 Find the total value of just the numbers in an array, even if some of the items are not
@@ -184,6 +189,20 @@ For example, if you send the array [1, “pickles”, 3, “onions”, 5, “10�
 function should return 15. Therefore, it should be able to recognize “10” as a
 string and ignore it from the total.
 */
+var addArrayNum = function(array){
+	var total = 0;
+	
+	for(var i=0; i < array.length; i++) {
+		if(!isNaN(array[i])) {
+			total += array[i];
+		} 
+		
+	}
+	return total;
+
+	
+}
+console.log(addArrayNum([10,"bob",2]));
 /*
 
 Given an array of objects and the name of a key, return the array sorted by the value of
@@ -194,3 +213,9 @@ array of objects by the key you send. In this case, you might send an array of
 objects [{a:2},{b:3}.{a:1},{a:4}] and the key “a” which will then be sorted by the
 function using the key “a” and returned as [{a:1},{a:2},{a:3},{a:4},{b:3}].
 */
+var keyArray = function(array,key){
+
+}
+
+
+
