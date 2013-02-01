@@ -105,7 +105,7 @@ var myLibrary = function(){
 			return parseInt(str);
 		};
 	};
-	// Dates differences
+	// Dates differences // project2 missing number functions
 	var diffDates = function(date1,date2,format) {
 		
 		var oneday =1000*60*60*24;
@@ -114,34 +114,50 @@ var myLibrary = function(){
 		var differencems = date2ms - date1ms;
 		
 		if(format == "days"){
-		return (Math.round(differencems/oneday) + "days");
+			return (Math.round(differencems/oneday) + "days");
 		}
 		if(format == "time") {
-		return (Math.round((differencems/oneday)*24) + "Hrs");
+			return (Math.round((differencems/oneday)*24) + "Hrs");
 		};
 	
 	};
 		// array next highest value
 	
-		var arrayValue = function(arr,value){
-			var arr = arr.slice(0).sort(function(a,b){return a-b;});
+	var arrayValue = function(arr,value){
+		var arr = arr.slice(0).sort(function(a,b){return a-b;});
 	
-			for (var i=0; i < arr.length; i++) {
-				if(arr[i] > value){
-					return arr[i];
-				}
-			};
-		};
-		// adding array numbers only
-		var addArrayNum = function(array){
-			var total = 0;
-			for(var i=0; i < array.length; i++) {
-				if("number" == typeof array[i]) {
-				total += array[i];
-				} 
+		for (var i=0; i < arr.length; i++) {
+			if(arr[i] > value){
+				return arr[i];
 			}
-			return total;
 		};
+	};
+		// adding array numbers only // project 2 missing Array functions
+	var addArrayNum = function(array){
+		var total = 0;
+		for(var i=0; i < array.length; i++) {
+			if("number" == typeof array[i]) {
+			total += array[i];
+			} 
+		}
+		return total;
+	};
+	// Fuzzy Match super hard one
+	var fuzzyMatch = function(value1,value2,value3){
+		if(value1 >= value2){
+		var value = value1 + " is greater then " + value2;
+		}else if(value1 < value2){
+			if(value1 <= value2 * value3) {
+				var value = value1 + " is less then " + value2 + "and, "
+				 + value1 + " is within " + value3 + " of " + value2;
+			}else{
+				var value = value1 + "is not within " + value3 + " of " + value2;
+			}
+		}	
+		return  value;
+	};
+	
+
 	
 	return {
 		"phoneNumberValid": phoneNumberValid,
@@ -153,7 +169,8 @@ var myLibrary = function(){
 		"parseNum": parseNum,
 		"diffDates": diffDates,
 		"arrayValue": arrayValue,
-		"addArrayNum": addArrayNum
+		"addArrayNum": addArrayNum,
+		"fuzzyMatch": fuzzyMatch
 	};
 	
 }
@@ -166,7 +183,7 @@ var json1 = {
 	"url": "https://www.holool.com",
 	"email": "Jtanner@fullsail.edu"
 };
-
+// use of Global Var project 2
 var newLib = new myLibrary;
 
 console.log(newLib.phoneNumberValid(json1.phoneNumber));
@@ -181,51 +198,29 @@ var later = new Date(2013, 0, 31);
 console.log(newLib.diffDates(now,later,"days"));
 console.log(newLib.arrayValue(json1.myArray,4));
 console.log(newLib.addArrayNum([10,"10",2,5,"20"]));
+console.log(newLib.fuzzyMatch(5,10,1/2));
 
 
-/*Fuzzy-match a number: is the number above or below a number within a certain
-percent?
-This function confuses students the most, so please ask if you have questions.
-You will send three numbers as parameters for the function. You will then
-compare the first number to the second number to see if the first number is
-greater than or less than the second number, and then you will use the third
-number to see if the first number is within that percentage of the second number.
-So, if you were to send (5, 10, 50), the function would first determine if 5 is
-greater than or less than 10. It would then determine if 5 is within 50% of 10. The
-function should then return the results.
-*/
-var fuzzyMatch = function(value1,value2,value3){
-
-
-}
-
-
-
-
-/*
-
-Given an array of objects and the name of a key, return the array sorted by the value of
-that key in each of the objects: “a” + [{a:2},{a:3},{a:1}] --> [{a:1},{a:2},{a:3}].
-This function also requires you to send two argument parameters. The first one
-is an array of objects and the second one is a key. The function will then sort the
-array of objects by the key you send. In this case, you might send an array of
-objects [{a:2},{b:3}.{a:1},{a:4}] and the key “a” which will then be sorted by the
-function using the key “a” and returned as [{a:1},{a:2},{a:3},{a:4},{b:3}].
-*/
+// spent lots of time on this one I can only get it to sort but not sort to a Key value.  
+// Didnt do a Flow chart for this one because didnt have break down of the Flow.
 var objectArraySort = function(array,key){
+	
 	for(var i = 0; i <array.length; i++) {
 		for(var j = i; j < array.length; j++){
-			if(array[j][index] < array[i][index]){
-				
-			}
-		}
-	}
+			if(array[i][key] < array[j]) {
 
-}
+				};
+
+			}
+		};	
+		
+	
+	return array;
+};
 
 var obArray = [{a:1},{a:3},{a:5},{a:7},{b:2},{b:3},{b:6}];
 
 
-console.log(obArray.prototype.sort("b"));
+console.log(objectArraySort(obArray,"b"));
 
 
